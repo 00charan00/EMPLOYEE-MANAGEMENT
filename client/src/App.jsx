@@ -5,6 +5,7 @@ import "./App.css"
 const App = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
+    id:'',
     name: '',
     designation: '',
     department: '',
@@ -48,20 +49,28 @@ const App = () => {
             <form onSubmit={handleEmployeeSubmit} className="space-y-4">
               <h2 className="text-xl font-semibold">Employee Registration</h2>
               <label className="block">
+                id
+                <input type="number" name="id" value={formData.id} onChange={handleChange}
+                       className="form-input mt-1"/>
+              </label>
+              <label className="block">
                 Name:
-                <input type="text" name="name" value={formData.name} onChange={handleChange} className="form-input mt-1" />
+                <input type="text" name="name" value={formData.name} onChange={handleChange}
+                       className="form-input mt-1"/>
               </label>
               <label className="block">
                 Designation:
-                <input type="text" name="designation" value={formData.designation} onChange={handleChange} className="form-input mt-1" />
+                <input type="text" name="designation" value={formData.designation} onChange={handleChange}
+                       className="form-input mt-1"/>
               </label>
               <label className="block">
                 Department:
-                <input type="text" name="department" value={formData.department} onChange={handleChange} className="form-input mt-1" />
+                <input type="text" name="department" value={formData.department} onChange={handleChange}
+                       className="form-input mt-1"/>
               </label>
               <label className="block">
                 Date of Birth:
-                <input type="date" name="dob" value={formData.dob} onChange={handleChange} className="form-input mt-1" />
+                <input type="date" name="dob" value={formData.dob} onChange={handleChange} className="form-input mt-1"/>
               </label>
               <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Next</button>
             </form>

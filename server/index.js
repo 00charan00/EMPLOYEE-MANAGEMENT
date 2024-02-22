@@ -1,5 +1,6 @@
 const express = require('express');
-const mysql = require('mysql');
+// const mysql = require('mysql');
+const mysql = require('mysql2');
 // const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -10,12 +11,14 @@ const port = 8080;
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1030',
-    database: 'emp'
-});
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '1030',
+//     database: 'emp'
+// });
+
+const db=mysql.createConnection(`mysql://root:BEC422B14D3baCb4gdfg41HaEgCFa5Ba@monorail.proxy.rlwy.net:25149/railway`)
 
 db.connect((err) => {
     if (err) {
@@ -26,9 +29,9 @@ db.connect((err) => {
 
 app.post('/register', (req, res) => {
     console.log(req.body);
-    const { name, designation, department, dob, email, address } = req.body;
-    const sql = "INSERT INTO employees (name, designation, department, dob, email, address) VALUES (?, ?, ?, ?, ?, ?)";
-    const values = [name, designation, department, dob, email, address];
+    const { id, name, designation, department, dob, email, address } = req.body;
+    const sql = "INSERT INTO emps (id,name, designation, department, dob, email, address) VALUES (?,?, ?, ?, ?, ?, ?)";
+    const values = [ id, name, designation, department, dob, email, address];
 
     db.query(sql, values, (err, data) => {
         if (err) {
