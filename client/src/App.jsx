@@ -30,7 +30,7 @@ const App = () => {
   const handleFinalSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/register', formData);
+      const response = await axios.post('https://employee-management-backend-ftlq.onrender.com/register', formData);
       if (response.status === 200) {
         // alert('Employee registered successfully');
         window.location.reload();
