@@ -43,6 +43,23 @@ app.post('/register', (req, res) => {
     });
 });
 
+
+// Add this route to your backend Express.js application
+
+app.get('/employees', (req, res) => {
+    const sql = "SELECT * FROM emps"; // Assuming your table name is 'emps'
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching employees:', err);
+            return res.status(500).json({ error: "Error fetching employees" });
+        }
+        console.log('Employees fetched successfully:', results);
+        return res.status(200).json(results);
+    });
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
