@@ -18,7 +18,7 @@ app.use(express.json());
 //     database: 'emp'
 // });
 
-const db=mysql.createConnection(`mysql://root:BEC422B14D3baCb4gdfg41HaEgCFa5Ba@monorail.proxy.rlwy.net:25149/railway`)
+const db=mysql.createConnection(`mysql://avnadmin:AVNS_wqJEv19TwrJJCpoRrZE@mysql-1501fbdc-charansdb.a.aivencloud.com:20259/employee`);
 
 db.connect((err) => {
     if (err) {
@@ -30,7 +30,7 @@ db.connect((err) => {
 app.post('/register', (req, res) => {
     console.log(req.body);
     const { id, name, designation, department, dob, email, address } = req.body;
-    const sql = "INSERT INTO emps (id,name, designation, department, dob, email, address) VALUES (?,?, ?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO emps (id,name, designation, department, dob, email, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
     const values = [ id, name, designation, department, dob, email, address];
 
     db.query(sql, values, (err, data) => {
